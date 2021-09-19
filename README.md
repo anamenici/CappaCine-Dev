@@ -14,7 +14,7 @@
 
 
 <p align="center">
- <a href="#regras">Regras</a> •
+ <a href="#instruções">Instruções</a> •
  <a href="#features">Features</a> •
  <a href="#pré-requisitos">Pré-requisitos</a> • 
  <a href="#tecnologias">Tecnologias</a> •  

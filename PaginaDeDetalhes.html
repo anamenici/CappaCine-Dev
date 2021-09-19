@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <style>
+        table{
+            width: 700px;
+            border-collapse: collapse;
+        }
+        td,th{
+            padding: 5px;
+            border:1px solid blue;
+        }
+        img{
+            max-height: 400px;
+
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <main> 
+        
+    </main>
+    <a href="index.html">Voltar para a lista</a>
+    <!-- Os dados da API aparecerão dentro do main --> 
+</body>
+<script>
+    async function getContent() {
+        try {
+            const c= 1;
+
+            const urlSearchParams = new URLSearchParams(window.location.search);
+            const params = Object.fromEntries(urlSearchParams.entries());
+            var id = params["id"];
+            const response = await(axios.get('http://localhost:4569/MovieDetails?id='+id));
+
+            const data = response.data;
+
+            show(data);
+        } 
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    getContent();
+
+    function show(res) {
+        let output = '<table>';
+        
+            
+            
+            //output += `<tr><td>ID:</td><td>${res.id}</td>`;
+            output += `<tr><td rowspan=7><img src="https://image.tmdb.org/t/p/w500${res.poster_path}" /></td>`
+            output += `<tr><th colspan=2>${res.title}</th>`;
+            output += `<tr><td>Adulto:</td><td>${res.adult}</td>`;
+            output += `<tr><td>Budget:</td><td>${res.budget}</td>`;
+            
+            output += `<tr><td>Lingua Original:</td><td>${res.original_language}</td>`;
+            output += `<tr><td>Resumo:</td><td>${res.overview}</td>`;
+                
+        
+        document.querySelector('main').innerHTML = output;
+    }
+
+
+
+</script>
+</html>
+
+  
